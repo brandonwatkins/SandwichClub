@@ -16,10 +16,10 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    /*private TextView originTv       = (TextView) findViewById(R.id.origin_tv);
+    private TextView originTv       = (TextView) findViewById(R.id.origin_tv);
     private TextView descriptionTv  = (TextView) findViewById(R.id.description_tv);
     private TextView ingredientsTv  = (TextView) findViewById(R.id.ingredients_tv);
-    private TextView alsoKnownTv    = (TextView) findViewById(R.id.also_known_tv);*/
+    private TextView alsoKnownTv    = (TextView) findViewById(R.id.also_known_tv);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
