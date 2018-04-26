@@ -77,6 +77,13 @@ public class DetailActivity extends AppCompatActivity {
         mAlsoKnownTv.setText(convertToString(sandwich.getAlsoKnownAs()));
     }
 
+
+    /**
+     * Discovered how to convert a list to a string from the website below
+     * https://reversecoding.net/java-8-convert-list-string-comma/
+     * @param list
+     * @return
+     */
     public String convertToString(List<String> list) {
         String convertedList = String.join(", ", list);
         return convertedList;
