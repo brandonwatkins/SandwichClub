@@ -18,6 +18,9 @@ public class JsonUtils {
 
         try {
 
+            String FALL_BACK_STRING = "Not Found";
+            JSONObject FALL_BACK_OBJECT = new JSONObject();
+
             List<String> alsoKnownAs = new ArrayList<>();
             List<String> ingredients = new ArrayList<>();
 
@@ -25,11 +28,11 @@ public class JsonUtils {
             JSONObject sandwich = new JSONObject(json);
 
             // Create the name Object
-            JSONObject name = sandwich.getJSONObject("name");
+            JSONObject name = sandwich.optJSONObject("name");
             // Retrieve the necessary name info
-            String mainName = name.getString("mainName");
+            String mainName = name.optString("mainName", FALL_BACK_STRING);
 
-            JSONArray alsoKnowAsArray = name.getJSONArray("alsoKnownAs");
+            JSONArray alsoKnowAsArray = name.optJSONArray("alsoKnownAs");
 
             // Gets the names within the JSONArray and adds it to the ArrayList I created
             for(int i = 0; i < alsoKnowAsArray.length(); i++) {
@@ -37,11 +40,11 @@ public class JsonUtils {
             }
 
             // Retrieve other info from the JSON sandwich object
-            String placeOfOrigin = sandwich.getString("placeOfOrigin");
-            String description = sandwich.getString("description");
-            String image = sandwich.getString("image");
+            String placeOfOrigin = sandwich.optString("placeOfOrigin", FALL_BACK_STRING);
+            String description = sandwich.optString("description", FALL_BACK_STRING);
+            String image = sandwich.optString("image", FALL_BACK_STRING);
 
-           JSONArray ingredientsArray = sandwich.getJSONArray("ingredients");
+           JSONArray ingredientsArray = sandwich.optJSONArray("ingredients");
 
            for(int i = 0; i < ingredientsArray.length(); i++) {
                ingredients.add(ingredientsArray.getString(i));

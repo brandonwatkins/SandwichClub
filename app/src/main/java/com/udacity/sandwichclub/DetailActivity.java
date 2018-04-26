@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
      * @return
      */
     public String convertToString(List<String> list) {
-        String convertedList = String.join(", ", list);
+        String convertedList = TextUtils.join(", ", list);
         return convertedList;
     }
 }
