@@ -11,22 +11,30 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.List;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    private TextView originTv       = (TextView) findViewById(R.id.origin_tv);
-    private TextView descriptionTv  = (TextView) findViewById(R.id.description_tv);
-    private TextView ingredientsTv  = (TextView) findViewById(R.id.ingredients_tv);
-    private TextView alsoKnownTv    = (TextView) findViewById(R.id.also_known_tv);
+    private TextView mOriginTv;
+    private TextView mDescriptionTv;
+    private TextView mIngredientsTv;
+    private TextView mAlsoKnownTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        mOriginTv = findViewById(R.id.origin_tv);
+        mDescriptionTv = findViewById(R.id.description_tv);
+        mIngredientsTv = findViewById(R.id.ingredients_tv);
+        mAlsoKnownTv = findViewById(R.id.also_known_tv);
+
         ImageView ingredientsIv = findViewById(R.id.image_iv);
+
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -63,9 +71,16 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        //originTv.setText(sandwich.getPlaceOfOrigin());
-        //descriptionTv.setText(sandwich.getDescription());
-        //ingredientsTv.setText(sandwich.getIngredients());
-        //alsoKnownTv.setText(sandwich.getAlsoKnownAs());
+        mOriginTv.setText(sandwich.getPlaceOfOrigin());
+        mDescriptionTv.setText(sandwich.getDescription());
+        mIngredientsTv.setText(convertToString(sandwich.getIngredients()));
+        mAlsoKnownTv.setText(convertToString(sandwich.getAlsoKnownAs()));
+    }
+
+    public String convertToString(List<String> list) {
+        String convertedList = String.join(", ", list);
+        return convertedList;
     }
 }
+
+
