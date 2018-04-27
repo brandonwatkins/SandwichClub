@@ -18,8 +18,7 @@ public class JsonUtils {
 
         try {
 
-            String FALL_BACK_STRING = "Not Found";
-            JSONObject FALL_BACK_OBJECT = new JSONObject();
+            String FALL_BACK_STRING = "N/A";
 
             List<String> alsoKnownAs = new ArrayList<>();
             List<String> ingredients = new ArrayList<>();
@@ -36,7 +35,7 @@ public class JsonUtils {
 
             // Gets the names within the JSONArray and adds it to the ArrayList I created
             for(int i = 0; i < alsoKnowAsArray.length(); i++) {
-                alsoKnownAs.add(alsoKnowAsArray.getString(i));
+                alsoKnownAs.add(alsoKnowAsArray.optString(i, FALL_BACK_STRING));
             }
 
             // Retrieve other info from the JSON sandwich object
@@ -47,7 +46,7 @@ public class JsonUtils {
            JSONArray ingredientsArray = sandwich.optJSONArray("ingredients");
 
            for(int i = 0; i < ingredientsArray.length(); i++) {
-               ingredients.add(ingredientsArray.getString(i));
+               ingredients.add(ingredientsArray.optString(i, FALL_BACK_STRING));
            }
 
             // Initialize new Sandwich Object
